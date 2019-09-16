@@ -1,0 +1,11 @@
+# Super user permission
+sudo: required
+services:
+  - docker
+
+before_install:
+  # Tag the image and the repo name
+  - docker build -t samczar/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run samczar/docker-react npm run test -- --coverage
